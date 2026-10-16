@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-carbon text-bone font-sans;
+    font-feature-settings: 'tnum' 0;
+  }
+  ::selection {
+    background: rgba(255, 91, 31, 0.35);
+  }
+  :focus-visible {
+    outline: 2px solid #ff5b1f;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  input[type='number']::-webkit-inner-spin-button {
+    opacity: 0.4;
+  }
+}
+
+@layer components {
+  /* Expanded heavy Archivo – the "number plate" display voice */
+  .font-display {
+    font-variation-settings: 'wdth' 125;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 0.95;
+  }
+  /* Condensed figures for specs, prices and tables */
+  .font-cond {
+    font-variation-settings: 'wdth' 78;
+    font-feature-settings: 'tnum' 1;
+  }
+  .tabular {
+    font-feature-settings: 'tnum' 1;
+  }
+
+  .container-site {
+    @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold
+      transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50 select-none;
+  }
+  .btn-primary {
+    @apply btn bg-ignite text-white hover:bg-ignite-600 active:bg-ignite-700;
+  }
+  .btn-light {
+    @apply btn bg-bone text-carbon hover:bg-white;
+  }
+  .btn-ghost {
+    @apply btn border border-white/15 text-bone hover:border-white/35 hover:bg-white/5;
+  }
+  .btn-danger {
+    @apply btn bg-tail text-white hover:bg-red-700;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  .btn-icon {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-lg transition-colors;
+  }
+
+  /* Admin surfaces (light + dark) */
+  .a-card {
+    @apply rounded-xl border border-zinc-200 bg-white dark:border-white/10 dark:bg-graphite;
+  }
+  .a-btn {
+    @apply btn border border-zinc-300 bg-white text-zinc-800 hover:bg-zinc-50
+      dark:border-white/15 dark:bg-white/5 dark:text-bone dark:hover:bg-white/10;
+  }
+  .a-input {
+    @apply w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400
+      focus:border-ignite focus:outline-none focus:ring-2 focus:ring-ignite/25
+      dark:border-white/15 dark:bg-carbon dark:text-bone dark:placeholder:text-fog;
+  }
+  .p-input {
+    @apply w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-3.5 py-2.5 text-sm text-bone placeholder:text-fog
+      focus:border-ignite focus:outline-none focus:ring-2 focus:ring-ignite/25;
+  }
+  .p-card {
+    @apply rounded-2xl border border-white/[0.08] bg-graphite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-area {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
