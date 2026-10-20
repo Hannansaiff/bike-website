@@ -58,6 +58,22 @@ npm run dev
 
 Optional: `Copy-Item .env.example .env` to change the API URL (default `http://localhost:8000/api`).
 
+## Deploy to Vercel
+
+The root `vercel.json` configures the frontend and FastAPI backend as services
+under one Vercel project and one public domain. Import the GitHub repository in
+Vercel and set the project **Root Directory** to `moto-showroom` (the directory
+containing this README and `vercel.json`). Vercel then builds both services and
+routes `/api/*` to FastAPI and all other paths to the React SPA. The frontend
+defaults to the same-origin `/api` in production; local development continues to
+use `http://localhost:8000/api`.
+
+Vercel Hobby is intended for personal, non-commercial use and is subject to usage
+limits. This is a demo: its backend data is in memory, so writes may be lost or
+inconsistent across serverless instances and restarts. Authentication is not real
+security, and the API is publicly accessible. Do not use this deployment with real
+customer data or for production operations.
+
 ### URLs
 
 | What | URL |

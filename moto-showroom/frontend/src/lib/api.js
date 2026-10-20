@@ -5,7 +5,8 @@
  */
 import { storage } from './storage';
 
-export const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000/api').replace(/\/$/, '');
+const DEFAULT_API_URL = import.meta.env.PROD ? '/api' : 'http://localhost:8000/api';
+export const API_URL = (import.meta.env.VITE_API_URL || DEFAULT_API_URL).replace(/\/$/, '');
 
 export class ApiError extends Error {
   constructor(message, { status = 0, code = 'error', fields = {} } = {}) {
